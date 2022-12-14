@@ -6,29 +6,30 @@ users = platform_users.users
 links = platform_users.links
 
 
-
-graph = Graph(password='neo4j')
+users_graph = Graph(password='neo4j')
 # transactions
-tx = graph.begin()
+tx = users_graph.begin()
 
+
+# users_graph design
+nodes_box=dict()
 for user in users:
-    new_node = Node("User",
+    nodes_box[user["name"]] = Node("User",
                     name = user["name"],
                     email = user["email"],
                     facebook = user["fb"],
                     phone = user["phone"])
 
-
-    tx.create(new_node)
-
-
-# for link in  links:
-#     new_relation=Relationship( source= link["src"],
-#                                linked_by=link["target"],
-#                                target=link["target"])
+for link in  links:
+     nodes_box[link["src"]+"-"+link["target"]] = Relationship( nodes_box[link["src"]],
+                               link["link"],
+                               nodes_box[link["target"]])
 
 
+# users_graph construction
+for key in nodes_box.keys():
+    tx.create(nodes_box[key])
 
-graph.commit(tx)
+users_graph.commit(tx)
 
 print('done')

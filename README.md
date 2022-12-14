@@ -20,8 +20,14 @@ Code related to Jira'S ticket /BP-18177
 
 ## Neo4j cheatsheet
     Delete all : MATCH (n) DETACH DELETE n
-    Select all : http://0.0.0.0:7474/browser/
-   
+    Select all :  MATCH (n) RETURN n
+
+## Some reading :
+https://singerlinks.com/2020/10/should-i-use-py2neo-or-the-native-python-driver-to-access-neo4j/
+https://github.com/neo4j-examples/movies-python-bolt
+https://github.com/elena/py2neo-quickstart
+
+
 
 
 

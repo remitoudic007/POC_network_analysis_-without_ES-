@@ -21,12 +21,12 @@ users = [
         "name": "User4",
         "email": "efg@gmail.com",
         "fb": "F3",
-        "phone": "fgh@gmail.com"
+        "phone": "987654"
     },
     {
         "name": "User99",
-        "email": "abc@gmail.com",
-        "fb": "F1",
+        "email": "xyz@gmail.com",
+        "fb": "F4",
         "phone": "123456"
     },
 ]
