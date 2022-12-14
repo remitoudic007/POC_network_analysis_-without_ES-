@@ -31,8 +31,8 @@ users = [
     },
 ]
 
-relations = [{"src": "User1", "target": "User2", "relation": "email"},
-             {"src": "User2", "target": "User3", "relation": "email"},
-             {"src": "User3", "target": "User4", "relation": "facebook"},
-             {"src": "User3", "target": "User99", "relation": "phone"},
+links = [{"src": "User1", "target": "User2", "link": "email"},
+             {"src": "User2", "target": "User3", "link": "email"},
+             {"src": "User3", "target": "User4", "link": "facebook"},
+             {"src": "User3", "target": "User99", "link": "phone"},
              ]

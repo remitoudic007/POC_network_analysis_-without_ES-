@@ -22,13 +22,22 @@ class NetworkNeo:
         result = tx.run(self.graph)
         return result
 
+    def find_direct_connection():
+        ...
+
+    def find_actors():
+        ...
+
+    def find_clusters():
+        ...
+
 
 if __name__ == "__main__":
 
     config = dict()
     config["uri"] = "neo4j://localhost:7687"
     config["name"] = "neo4j"
-    config["pwd"] = "remitoudic"
+    config["pwd"] = "neo4j"
 
     config["graph"] = """
         CREATE (user1:User {name:"User1", email:'abc@gmail.com',fb:'F1', phone:453576})
