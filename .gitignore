@@ -80,3 +80,6 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
+#neo4j 
+../../.data/

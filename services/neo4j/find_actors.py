@@ -2,7 +2,7 @@
 
 from py2neo import Graph
 import json
-
+import random
 
 graph_neo = Graph(password='neo4j')
 
@@ -20,35 +20,65 @@ def find_commom_attribues(graph)-> dict:
     common["email"] = dict((x,E.count(x)) for x in set(E)if E.count(x)>1)
     common["facebook"] = dict((x,F.count(x)) for x in set(F)if F.count(x)>1)
 
-    return  common
+    number_of_actors=len(common["phone"])+ len(common["email"])+ len(common["facebook"])
+
+    res = {  "common_attributes" : common,
+             "number_of_actors" : number_of_actors}
+
+    return res
 
 
 COMMON_attr=find_commom_attribues( graph_neo)
 
-def find_actor(dict_common):
+
+
+def find_nodes_actors(dict_common):
     """
     find user with common  attributes
     """
-    actors= dict()
-    counter_actor=0
-    for email in  dict_common["email"]:
 
+    actors= { "names":[],
+              "actors_details":[]}
+    counter_actor=0
+
+
+    for email in  dict_common["email"]:
         via_email = graph_neo.nodes.match(email=email)
-        actors["email"]=via_email.all()
+        name= "actor"+str(random.randint(10,100))
+        actors["names"].append(name)
+        actors["actors_details"]. append({"name":name,
+                                          "linked_by":"email",
+                                          "users_member": via_email.all()})
+
 
     for phone in  dict_common["phone"]:
         via_phone= graph_neo.nodes.match(phone=phone)
-        actors["phone"]=via_phone.all()
+        name= "actor"+str(random.randint(10,100))
+        actors["names"].append(name)
+        actors["actors_details"]. append({"name":name,
+                                          "linked_by":"email",
+                                          "users_member": via_phone.all()})
 
     for fb in  dict_common["facebook"]:
         via_facebook = graph_neo.nodes.match(facebook=fb)
-        actors["facebook"]=via_facebook.all()
-
-    print (json.dumps(actors, indent=1))
+        name= "actor"+str(random.randint(10,100))
+        actors["names"].append(name)
+        actors["actors_details"]. append({ "name":name,
+                                          "linked_by":"email",
+                                          "users_member": via_facebook.all()})
 
     return actors
 
 
-test=find_actor(COMMON_attr)
+
+# " main "
+
+Actors= find_nodes_actors(COMMON_attr["common_attributes"])
+n_actors= COMMON_attr["number_of_actors"]
+
+print ( '\n',"Actors numbers :",n_actors,)
+print (" details: ", json.dumps(Actors, indent=1))
+
+
 
 

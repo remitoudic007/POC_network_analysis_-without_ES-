@@ -1,7 +1,7 @@
 users = [
     {
         "name": "User1",
-        "email": "abc@gmail.com",
+        "email": "jame@smith.com",
         "fb": "F1",
         "phone": "654321"
     },
@@ -31,8 +31,19 @@ users = [
     },
 ]
 
-links = [{"src": "User1", "target": "User2", "link": "email"},
-             {"src": "User2", "target": "User3", "link": "email"},
+links = [   {"src": "User1", "target": "User2", "link": "email"},
+            {"src": "User2", "target": "User3", "link": "email"},
              {"src": "User3", "target": "User4", "link": "facebook"},
              {"src": "User3", "target": "User99", "link": "phone"},
              ]
+
+items =[{"type":"market place ",
+          "platformn": "ebay",
+          "url": "...",
+          "collected for user": {}},
+        {"type": "social media",
+            "Platform": "instagram",
+            "url": "...",
+             "collected for user": {}},
+           
+        {}]
