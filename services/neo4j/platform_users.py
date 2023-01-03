@@ -1,5 +1,5 @@
 users = [
-    {
+    {  
         "name": "User1",
         "email": "jame@smith.com",
         "fb": "F1",
@@ -36,6 +36,8 @@ links = [   {"src": "User1", "target": "User2", "link": "email"},
              {"src": "User3", "target": "User4", "link": "facebook"},
              {"src": "User3", "target": "User99", "link": "phone"},
              ]
+            
+links_bulk = [(35,{"email":"REMI"}, 39)]
 
 items =[{"type":"market place ",
           "platformn": "ebay",
@@ -45,5 +47,5 @@ items =[{"type":"market place ",
             "Platform": "instagram",
             "url": "...",
              "collected for user": {}},
-           
+
         {}]
